@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DNS Resolver</title>
+</head>
+<body>
+    <h1>Simple DNS Resolver</h1>
+    <form id="dnsForm">
+        <label for="domain">Enter Domain:</label>
+        <input type="text" id="domain" name="domain" required>
+        <button type="submit">Resolve</button>
+    </form>
+    <h3>Result:</h3>
+    <pre id="result"></pre>
+
+    <script>
+        document.getElementById('dnsForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const domain = document.getElementById('domain').value;
+            const resultElement = document.getElementById('result');
+            resultElement.textContent = 'Resolving...';
+
+            try {
+                const response = await fetch('http://127.0.0.1:5000/resolve', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ domain: domain })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Server returned an error.');
+                }
+
+                const data = await response.json();
+                resultElement.textContent = JSON.stringify(data, null, 2);
+
+            } catch (error) {
+                resultElement.textContent = 'Error: ' + error.message;
+            }
+        });
+    </script>
+</body>
+</html>
