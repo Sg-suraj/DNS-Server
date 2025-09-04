@@ -21,6 +21,10 @@ Subprocess Communication Issues: Integrating the Python backend with the Java cl
 
 Code Caching: Debugging was made more complex by aggressive code caching in both VS Code and IntelliJ IDEA. My changes were not immediately reflected in the running application, leading to misleading results and requiring me to manually clean and rebuild the project to ensure the latest code was being executed.
 
+Thank you for providing the links to your screenshots on GitHub.
+
+You can now use these URLs to embed the images directly into your README.md file. I've put together the final Markdown code for you below. Simply copy and paste this into your README.md file on GitHub, and the images will display correctly.
+
 How to Run
 To run this project, you need three separate terminals or console windows.
 
